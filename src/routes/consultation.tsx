@@ -20,7 +20,7 @@ export const Route = createFileRoute("/consultation")({
       },
     ],
   }),
-  component: Consultation;
+  component: Consultation,
 });
 
 const slots = ["09h30", "10h30", "11h30", "14h00", "15h00", "16h00", "17h00", "18h00"];

@@ -32,9 +32,9 @@ function Contact() {
     const fd = new FormData(e.currentTarget);
     const get = (k: string) => String(fd.get(k) ?? "").trim();
     const next: Record<string, string> = {};
-    if (get("nom").length < 2) next.nom = "Merci d'indiquer votre nom.";
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(get("email"))) next.email = "Adresse e-mail invalide.";
-    if (get("message").length < 10) next.message = "Votre message est trop court.";
+    if (get("nom").length < 2) next['nom'] = "Merci d'indiquer votre nom.";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(get("email"))) next['email'] = "Adresse e-mail invalide.";
+    if (get("message").length < 10) next['message'] = "Votre message est trop court.";
     setErrors(next);
     if (Object.keys(next).length === 0) setSent(true);
   }
@@ -73,22 +73,22 @@ function Contact() {
                     Nom et prénom
                   </label>
                   <input id="nom" name="nom" className={field} />
-                  {errors.nom && <p className="mt-1 text-xs text-destructive">{errors.nom}</p>}
+                  {errors['nom'] && <p className="mt-1 text-xs text-destructive">{errors['nom']}</p>}
                 </div>
                 <div>
                   <label className={label} htmlFor="email">
                     E-mail
                   </label>
                   <input id="email" name="email" type="email" className={field} />
-                  {errors.email && <p className="mt-1 text-xs text-destructive">{errors.email}</p>}
+                  {errors['email'] && <p className="mt-1 text-xs text-destructive">{errors['email']}</p>}
                 </div>
                 <div>
                   <label className={label} htmlFor="message">
                     Message
                   </label>
                   <textarea id="message" name="message" rows={5} className={field} />
-                  {errors.message && (
-                    <p className="mt-1 text-xs text-destructive">{errors.message}</p>
+                  {errors['message'] && (
+                    <p className="mt-1 text-xs text-destructive">{errors['message']}</p>
                   )}
                 </div>
               </div>

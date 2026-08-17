@@ -37,13 +37,13 @@ function Consultation() {
     const fd = new FormData(e.currentTarget);
     const get = (k: string) => String(fd.get(k) ?? "").trim();
     const next: Errors = {};
-    if (get("prenom").length < 2) next.prenom = "Merci d'indiquer votre prénom.";
-    if (get("nom").length < 2) next.nom = "Merci d'indiquer votre nom.";
-    if (!/^[+0-9 ().-]{8,}$/.test(get("telephone"))) next.telephone = "Numéro de téléphone invalide.";
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(get("email"))) next.email = "Adresse e-mail invalide.";
-    if (!get("date")) next.date = "Choisissez une date souhaitée.";
-    if (!get("creneau")) next.creneau = "Choisissez un créneau.";
-    if (!get("motif")) next.motif = "Précisez le motif du rendez-vous.";
+    if (get("prenom").length < 2) next['prenom'] = "Merci d'indiquer votre prénom.";
+    if (get("nom").length < 2) next['nom'] = "Merci d'indiquer votre nom.";
+    if (!/^[+0-9 ().-]{8,}$/.test(get("telephone"))) next['telephone'] = "Numéro de téléphone invalide.";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(get("email"))) next['email'] = "Adresse e-mail invalide.";
+    if (!get("date")) next['date'] = "Choisissez une date souhaitée.";
+    if (!get("creneau")) next['creneau'] = "Choisissez un créneau.";
+    if (!get("motif")) next['motif'] = "Précisez le motif du rendez-vous.";
     setErrors(next);
     if (Object.keys(next).length === 0) setSent(true);
   }
@@ -108,7 +108,7 @@ function Consultation() {
                       </option>
                     ))}
                   </select>
-                  {errors.creneau && <p className="mt-1 text-xs text-destructive">{errors.creneau}</p>}
+                  {errors['creneau'] && <p className="mt-1 text-xs text-destructive">{errors['creneau']}</p>}
                 </div>
 
                 <div className="sm:col-span-2">
@@ -123,7 +123,7 @@ function Consultation() {
                       </option>
                     ))}
                   </select>
-                  {errors.motif && <p className="mt-1 text-xs text-destructive">{errors.motif}</p>}
+                  {errors['motif'] && <p className="mt-1 text-xs text-destructive">{errors['motif']}</p>}
                 </div>
 
                 <div className="sm:col-span-2">
